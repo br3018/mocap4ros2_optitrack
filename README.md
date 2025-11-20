@@ -4,17 +4,19 @@
 
 [![codecov](https://codecov.io/gh/MOCAP4ROS2-Project/mocap4r2_optitrack_driver/rolling/graph/badge.svg)](https://codecov.io/gh/MOCAP4ROS2-Project/mocap4r2_optitrack_driver)
 
-Create workspace:
+Navigate to workspace to install from:
 ```
-mkdir -p mocap4r2_ws/src && cd mocap4r2_ws/src
+cd <ros2_ws>/src
 ```
-Download optitrack repo:
+Download repository:
 ```
-git clone https://github.com/MOCAP4ROS2-Project/mocap4ros2_optitrack.git
+git clone https://github.com/br3018/mocap4ros2_optitrack.git
 ```
 Install dependencies:
 ```
+cd ..
 rosdep install --from-paths src --ignore-src -r -y
+cd src
 vcs import < mocap4ros2_optitrack/dependency_repos.repos
 ```
 Compiling workspace:
@@ -25,9 +27,9 @@ Source workspace:
 ```
 source install/setup.bash
 ```
-Setup your optitrack configuration:
+Setup your optitrack configuration in the following file:
 ```
-mocap4r2_ws/src/mocap4ros2_optitrack/mocap4r2_optitrack_driver/config/mocap4r2_optitrack_driver_params.yaml
+<ros2_ws>/src/mocap4ros2_optitrack/mocap4r2_optitrack_driver/config/mocap4r2_optitrack_driver_params.yaml
 ```
 Launch optitrack system:
 ```
@@ -37,7 +39,7 @@ Check that Optitrack configuration works fine and is connected. As the driver no
 ```
 ros2 lifecycle set /mocap4r2_optitrack_driver_node activate
 ```
-Visualize in rViz:
+Visualize in rViz if needed:
 ```
 ros2 launch mocap4r2_marker_viz mocap4r2_marker_viz.launch.py mocap4r2_system:=optitrack
 ```
